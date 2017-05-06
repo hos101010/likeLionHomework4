@@ -1,40 +1,39 @@
-<div class="container">
+<div class="wrap">
+<div class="reader">
+    
     <form action="new_movie">
-  <div class="form-group">
-    <label for="exampleInputEmail1">영화를 입력해주세요</label>
-    <input type="text" class="form-control" name="title" id="title" placeholder="movie">
-  </div>
-  
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+        <div class="search">
+        <input type="text" class="form-control" name="title" id="title" placeholder="movie">
+        <button type="submit" class="btn btn-primary">Search</button>
+        </div>
+    </form>
+    
 </div>
 
-<div class="container">
+<div class="posters">
     <% @movie_list.each do |movie| %>
-    <section class="row movie_table">
-        <div class="col-md-3 poster">
-            <%= image_tag(movie.poster) %>
-        </div>
-        <div class="col-md-9 content">
+    <section class="poster">
+        <%= image_tag(movie.poster) %>
             <form action="edit">
-            <p>Title : <%= movie.title%></p>
-            <p>Genre : 
-            <input type="text" name="genre" value="<%= movie.genre%>" class="form-control" id="genre">
-            </p>
-            <p>Director :
-            <input type="text" name="director" value="<%= movie.director%>" class="form-control" id="director">
-            </p>
-            <p>
-            <textarea name="id" style="display:none;"><%= movie.id%></textarea>
-            <button type="submit" class="btn btn-primary">edit</button>
-            </p>
+                <div class="content">
+                    <p>Title : <%= movie.title%></p>
+                    <p>Genre : 
+                        <input type="text" name="genre" value="<%= movie.genre%>" class="form-control" id="genre">
+                    </p>
+                    <p>Director :
+                        <input type="text" name="director" value="<%= movie.director%>" class="form-control" id="director">
+                    </p>
+                    <p>
+                        <textarea name="id" style="display:none;"><%= movie.id%></textarea>
+                        <button type="submit" class="btn btn-outline-info btn-sm">edit</button>
+                    </p>
+                </div>
             </form>
             <form action="delete">
                 <textarea name="id" style="display:none;"><%= movie.id%></textarea>
-                <button type="submit" class="btn btn-primary">delete</button>
+                <button type="submit" class="btn btn-outline-info btn-sm">delete</button>
             </form>
-        </div>
     </section>
     <%end%>
 </div>
-
+</div>
