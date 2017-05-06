@@ -1,0 +1,40 @@
+<div class="container">
+    <form action="new_movie">
+  <div class="form-group">
+    <label for="exampleInputEmail1">영화를 입력해주세요</label>
+    <input type="text" class="form-control" name="title" id="title" placeholder="movie">
+  </div>
+  
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+
+<div class="container">
+    <% @movie_list.each do |movie| %>
+    <section class="row movie_table">
+        <div class="col-md-3 poster">
+            <%= image_tag(movie.poster) %>
+        </div>
+        <div class="col-md-9 content">
+            <form action="edit">
+            <p>Title : <%= movie.title%></p>
+            <p>Genre : 
+            <input type="text" name="genre" value="<%= movie.genre%>" class="form-control" id="genre">
+            </p>
+            <p>Director :
+            <input type="text" name="director" value="<%= movie.director%>" class="form-control" id="director">
+            </p>
+            <p>
+            <textarea name="id" style="display:none;"><%= movie.id%></textarea>
+            <button type="submit" class="btn btn-primary">edit</button>
+            </p>
+            </form>
+            <form action="delete">
+                <textarea name="id" style="display:none;"><%= movie.id%></textarea>
+                <button type="submit" class="btn btn-primary">delete</button>
+            </form>
+        </div>
+    </section>
+    <%end%>
+</div>
+
